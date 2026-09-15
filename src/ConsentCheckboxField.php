@@ -12,7 +12,11 @@ class ConsentCheckboxField extends CheckboxField {
 	protected $customValidationMessage;
 
 	public function __construct($name, $title = null, $value = null) {
-		$this->setConsentType($name);
+		// Only derive the consent type from the field name for generic
+		// consent fields; subclasses (e.g. terms/privacy) keep their own type.
+		if ($this->consentType === 'CustomConsent') {
+			$this->setConsentType($name);
+		}
 		parent::__construct($name, $title, $value);
 	}
 

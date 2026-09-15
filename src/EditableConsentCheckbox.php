@@ -45,8 +45,6 @@ class EditableConsentCheckbox extends EditableFormField {
 		
 		$consentID = $this->ConsentIDField;
 
-		// print_r($this->ConsentIDField);die();
-		
 		$field = ConsentCheckboxField::create( $this->Name, $this->Title)
 			->setConsentIDFieldName($consentID);
 		

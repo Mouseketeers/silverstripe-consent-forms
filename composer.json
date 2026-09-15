@@ -15,6 +15,7 @@
         }
     ],
     "require": {
+        "silverstripe/userforms": "^5.0",
         "mouseketeers/silverstripe-consent-records": "^2"
     },
     "config": {

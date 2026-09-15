@@ -2,7 +2,6 @@
 
 namespace Mouseketeers\ConsentForms;
 
-use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\DropdownField;
 
 
