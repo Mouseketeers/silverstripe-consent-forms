@@ -11,8 +11,10 @@ class EditablePrivacyNoticeField extends EditableFormField {
 
 	private static $singular_name = 'Privacy Notice';
 
-	private static $plural_name = 'Privacy Notices';
-
+	/**
+	 * Singular name is used as the default title; the plural name comes from
+	 * lang/*.yml PLURALNAME so no $plural_name is needed.
+	 */
 	static $icon = 'consent-forms/images/privacy.png';
 
 	public function populateDefaults() {

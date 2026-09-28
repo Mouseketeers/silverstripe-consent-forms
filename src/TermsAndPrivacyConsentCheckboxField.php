@@ -18,22 +18,11 @@ class TermsAndPrivacyConsentCheckboxField extends ConsentCheckboxField {
 	public function getTitle() {
 		$siteConfig = SiteConfig::current_site_config();
 
-		$termsPage = $siteConfig->TermsPageID ? $siteConfig->TermsPage() : null;
-		$privacyPage = $siteConfig->PrivacyPageID ? $siteConfig->PrivacyPage() : null;
+		$termsLabel = _t('TermsAndPrivacyConsentCheckboxField.Terms', 'Terms of Service');
+		$privacyLabel = _t('TermsAndPrivacyConsentCheckboxField.PrivacyPolicy', 'Privacy Policy');
 
-		if ($termsPage) {
-			$terms = '<a href="' . $termsPage->Link() . '" target="_blank" class="legal-page-link">'
-				. $termsPage->MenuTitle . '</a>';
-		} else {
-			$terms = _t('TermsAndPrivacyConsentCheckboxField.Terms', 'Terms of Service');
-		}
-
-		if ($privacyPage) {
-			$privacy = '<a href="' . $privacyPage->Link() . '" target="_blank" class="legal-page-link">'
-				. $privacyPage->MenuTitle . '</a>';
-		} else {
-			$privacy = _t('TermsAndPrivacyConsentCheckboxField.PrivacyPolicy', 'Privacy Policy');
-		}
+		$terms = $siteConfig->getTermsPageLink($termsLabel) ?: $termsLabel;
+		$privacy = $siteConfig->getPrivacyPageLink($privacyLabel) ?: $privacyLabel;
 
 		return _t(
 			'TermsAndPrivacyConsentCheckboxField.ConsentStatement',

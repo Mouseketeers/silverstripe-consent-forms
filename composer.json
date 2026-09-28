@@ -16,7 +16,7 @@
     ],
     "require": {
         "silverstripe/userforms": "^5.0",
-        "mouseketeers/silverstripe-consent-records": "^2"
+        "mouseketeers/silverstripe-consent-records": "^2.1"
     },
     "config": {
         "process-timeout": 600
@@ -27,5 +27,5 @@
         "psr-4": {
             "Mouseketeers\\ConsentForms\\": "src/"
         }
-    }     
+    }
 }
