@@ -15,7 +15,7 @@
         }
     ],
     "require": {
-        "mouseketeers/silverstripe-consent-records": "^1.0"
+        "mouseketeers/silverstripe-consent-records": "^1.1"
     },
     "minimum-stability": "stable",
     "extra": {
