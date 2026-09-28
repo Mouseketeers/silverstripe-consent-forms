@@ -10,7 +10,8 @@ class PrivacyNoticeField extends LiteralField {
     
     public function getTitle() {
         $siteConfig = SiteConfig::current_site_config();
-        $privacyPage = $siteConfig->PrivacyPageID ? $siteConfig->PrivacyPage() : null;
+        $privacyLabel = _t('PrivacyNoticeField.PrivacyPolicy', 'Privacy Policy');
+        $privacyLink = $siteConfig->getPrivacyPageLink($privacyLabel);
         
         $baseText = _t(
             'PrivacyNoticeField.ImpliedAgreement'
@@ -18,13 +19,7 @@ class PrivacyNoticeField extends LiteralField {
         
         $fullText = $baseText;
         
-        if ($privacyPage) {
-            $privacyLink = sprintf(
-                '<a href="%s" target="_blank" class="legal-page-link">%s</a>',
-                $privacyPage->Link(),
-                $privacyPage->MenuTitle
-            );
-            
+        if ($privacyLink) {
             $privacyText = _t(
                 'PrivacyNoticeField.PrivacyPolicyReference', 
                 'For further details, please refer to our {privacypolicy}.',

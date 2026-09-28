@@ -16,4 +16,5 @@ en:
     PrivacyPolicy: 'Privacy Policy'
   PrivacyNoticeField:
     ImpliedAgreement: 'We use the information you provide exclusively to handle your inquiry.'
+    PrivacyPolicy: 'Privacy Policy'
     PrivacyPolicyReference: For further details, please refer to our {privacypolicy}.
