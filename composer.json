@@ -21,7 +21,6 @@
     },
     "require": {
         "silverstripe/framework": "^4.0",
-        "silverstripe/cms": "^4.0",
         "silverstripe/siteconfig": "^4.0",
         "silverstripe/userforms": "^5.0",
         "mouseketeers/silverstripe-consent-records": "^2.1"
