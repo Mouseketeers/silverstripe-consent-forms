@@ -12,7 +12,7 @@ use SilverStripe\Forms\FieldList;
  *
  * This lives in the core package (which does not depend on silverstripe/userforms)
  * so consents can be recorded from any SilverStripe form. The userforms add-on
- * (mouseketeers/silverstripe-consent-forms-userforms) feeds the submitted values
+ * (mouseketeers/silverstripe-consent-userforms) feeds the submitted values
  * in from its UserDefinedFormController extension.
  */
 class ConsentRecorder
