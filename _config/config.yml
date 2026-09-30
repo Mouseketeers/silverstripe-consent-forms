@@ -1,6 +1,0 @@
----
-Name: consent-forms
----
-Form:
-  extensions:
-    - ConsentFormExtension

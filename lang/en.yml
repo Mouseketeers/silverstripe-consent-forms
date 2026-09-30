@@ -1,13 +1,4 @@
 en:
-  EditableConsentCheckbox:
-    PLURALNAME: 'Consent Checkboxes'
-    SINGULARNAME: 'Consent Checkbox'
-  EditableTermsAndPrivacyConsentCheckbox:
-    PLURALNAME: 'Terms and Privacy Checkboxes'
-    SINGULARNAME: 'Terms and Privacy Checkbox'
-  EditablePrivacyNoticeField:
-    PLURALNAME: 'Privacy Notices'
-    SINGULARNAME: 'Privacy Notice'
   ConsentCheckboxField:
     ConsentErrorMessage: 'Please give your consent'
   TermsAndPrivacyConsentCheckboxField:

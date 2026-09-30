@@ -17,6 +17,9 @@
     "require": {
         "mouseketeers/silverstripe-consent-records": "^1.1"
     },
+    "suggest": {
+        "mouseketeers/silverstripe-consent-userforms": "Adds UserForms integration: CMS-editable consent fields and automatic consent recording"
+    },
     "minimum-stability": "stable",
     "extra": {
         "installer-name": "consent-forms"
