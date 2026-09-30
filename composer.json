@@ -25,7 +25,7 @@
         "mouseketeers/silverstripe-consent-records": "^2.1"
     },
     "suggest": {
-        "mouseketeers/silverstripe-consent-forms-userforms": "Adds UserForms integration: CMS-editable consent fields and automatic consent recording on submission"
+        "mouseketeers/silverstripe-consent-userforms": "Adds UserForms integration: CMS-editable consent fields and automatic consent recording on submission"
     },
     "config": {
         "process-timeout": 600
