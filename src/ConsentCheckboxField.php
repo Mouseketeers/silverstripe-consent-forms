@@ -38,7 +38,7 @@ class ConsentCheckboxField extends CheckboxField {
 		return $this;
 	}
 	public function getCustomValidationMessage() {
-		return ($this->customValidationMessage) ? $this->customValidationMessage : _t('ConsentCheckboxField.ConsentErrorMessage', 'Please give your consent');
+		return $this->customValidationMessage ?: _t('ConsentCheckboxField.ConsentErrorMessage', 'Please give your consent');
 	}
 	public function setCustomValidationMessage($message) {
 		$this->customValidationMessage = $message;
