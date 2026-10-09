@@ -44,8 +44,8 @@ class ConsentCheckboxField extends CheckboxField {
 		$this->customValidationMessage = $message;
 		return $this;
 	}
-	public function validate($validator) {
-		if (!$this->Value()) {
+	public function validate($validator = null): \SilverStripe\Core\Validation\ValidationResult {
+		if (!$this->getFormattedValue()) {
 			$validator->validationError(
 				$this->name,
 				$this->getCustomValidationMessage(),
