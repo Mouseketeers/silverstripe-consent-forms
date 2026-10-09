@@ -20,7 +20,7 @@
         "source": "https://github.com/Mouseketeers/silverstripe-consent-forms"
     },
     "require": {
-        "silverstripe/framework": "^5",
+        "silverstripe/framework": "^5.4",
         "silverstripe/siteconfig": "^5",
         "mouseketeers/silverstripe-consent-records": "^3",
         "php": "^8.1"
