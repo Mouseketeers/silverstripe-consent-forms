@@ -22,7 +22,7 @@
     "require": {
         "silverstripe/framework": "^6",
         "silverstripe/siteconfig": "^6",
-        "mouseketeers/silverstripe-consent-records": "^4",
+        "mouseketeers/silverstripe-consent-records": "^3",
         "php": "^8.3"
     },
     "suggest": {
