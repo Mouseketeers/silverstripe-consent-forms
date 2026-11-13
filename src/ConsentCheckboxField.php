@@ -2,6 +2,7 @@
 
 namespace Mouseketeers\ConsentForms;
 
+use SilverStripe\Core\Validation\ValidationResult;
 use SilverStripe\Forms\CheckboxField;
 
 
@@ -44,15 +45,11 @@ class ConsentCheckboxField extends CheckboxField {
 		$this->customValidationMessage = $message;
 		return $this;
 	}
-	public function validate($validator = null): \SilverStripe\Core\Validation\ValidationResult {
+	public function validate(): ValidationResult {
+		$result = parent::validate();
 		if (!$this->getFormattedValue()) {
-			$validator->validationError(
-				$this->name,
-				$this->getCustomValidationMessage(),
-				"required"
-			);
-			return false;
+			$result->addFieldError($this->name, $this->getCustomValidationMessage(), 'required');
 		}
-		return parent::validate($validator);
+		return $result;
 	}
 }
