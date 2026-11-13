@@ -36,5 +36,14 @@
         "psr-4": {
             "Mouseketeers\\ConsentForms\\": "src/"
         }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "silverstripe/sqlite3": "^2"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Mouseketeers\\ConsentForms\\Tests\\": "tests/"
+        }
     }
 }
