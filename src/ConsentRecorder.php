@@ -3,6 +3,9 @@
 namespace Mouseketeers\ConsentForms;
 
 use Mouseketeers\ConsentRecords\ConsentRecord;
+use Psr\Log\LoggerInterface;
+use SilverStripe\Core\Config\Config;
+use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Forms\CompositeField;
 use SilverStripe\Forms\FieldList;
 
@@ -18,13 +21,24 @@ use SilverStripe\Forms\FieldList;
 class ConsentRecorder
 {
     /**
+     * Whether the whole submission is copied into every ConsentRecord's
+     * ConsentData. Off by default (data minimisation): the record then holds
+     * only the consent itself, its ID, statement, type and URL.
+     *
+     * @config
+     */
+    private static $store_form_data = false;
+
+    /**
      * Record one ConsentRecord for each checked consent field in the given form.
      *
      * @param FieldList $fields Rendered form fields (handles nested composite/step fields)
      * @param array $submitted Name => value map of the submitted fields
-     * @return int Number of consent records written (0 when there is nothing to record)
+     * @param array $context Optional 'Source' (default 'form') and 'SubmissionID' stored on each record
+     * @return int Number of consent records written (0 when there is nothing to record,
+     *             or when saving failed; failures are logged)
      */
-    public static function record(FieldList $fields, array $submitted)
+    public static function record(FieldList $fields, array $submitted, array $context = [])
     {
         $consentFields = [];
         $formData = [];
@@ -37,6 +51,8 @@ class ConsentRecorder
             return 0;
         }
 
+        $storedData = Config::inst()->get(self::class, 'store_form_data') ? $formData : [];
+
         $consents = [];
         foreach ($consentFields as $field) {
             // Only checked consent checkboxes are recorded.
@@ -48,7 +64,9 @@ class ConsentRecorder
                 'ConsentType' => $field->getConsentType(),
                 'ConsentID' => $submitted[$field->getConsentIDFieldName()] ?? null,
                 'ConsentStatement' => $field->Title(),
-                'ConsentData' => $formData,
+                'ConsentData' => $storedData ?: null,
+                'Source' => $context['Source'] ?? 'form',
+                'SubmissionID' => $context['SubmissionID'] ?? 0,
             ];
         }
 
@@ -57,10 +75,19 @@ class ConsentRecorder
         }
 
         // One call per submission; a record is written for each consented field.
-        ConsentRecord::registerConsents([
-            'FormData' => $formData,
+        $saved = ConsentRecord::registerConsents([
+            'FormData' => $storedData,
             'Consents' => $consents,
         ]);
+
+        if (!$saved) {
+            Injector::inst()->get(LoggerInterface::class)->error(sprintf(
+                'Consent records were NOT saved for %d consent(s) (%s).',
+                count($consents),
+                implode(', ', array_column($consents, 'ConsentType'))
+            ));
+            return 0;
+        }
 
         return count($consents);
     }
