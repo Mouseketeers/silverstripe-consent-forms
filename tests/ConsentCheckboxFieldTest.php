@@ -25,4 +25,11 @@ class ConsentCheckboxFieldTest extends SapphireTest
 
         $this->assertTrue($field->validate(new RequiredFields()));
     }
+
+    public function testOptionalBoxPassesWhenUnticked()
+    {
+        $field = ConsentCheckboxField::create('Newsletter', 'Send me news')->setConsentRequired(false);
+
+        $this->assertTrue($field->validate(new RequiredFields()));
+    }
 }

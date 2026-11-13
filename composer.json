@@ -22,7 +22,7 @@
     "require": {
         "silverstripe/framework": "^4.0",
         "silverstripe/siteconfig": "^4.0",
-        "mouseketeers/silverstripe-consent-records": "^2.1"
+        "mouseketeers/silverstripe-consent-records": "^2.2"
     },
     "suggest": {
         "mouseketeers/silverstripe-consent-userforms": "Adds UserForms integration: CMS-editable consent fields and automatic consent recording on submission"

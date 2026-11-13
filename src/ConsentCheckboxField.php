@@ -10,6 +10,7 @@ class ConsentCheckboxField extends CheckboxField {
 	protected $consentIDFieldName = 'Email';
 	protected $consentType = 'CustomConsent';
 	protected $customValidationMessage;
+	protected $consentRequired = true;
 
 	public function __construct($name, $title = null, $value = null) {
 		// Only derive the consent type from the field name for generic
@@ -37,6 +38,16 @@ class ConsentCheckboxField extends CheckboxField {
 		$this->consentType = $consentType;
 		return $this;
 	}
+	/**
+	 * Whether the box must be ticked to submit (default). Set false for optional opt-ins.
+	 */
+	public function setConsentRequired($required) {
+		$this->consentRequired = (bool) $required;
+		return $this;
+	}
+	public function isConsentRequired() {
+		return $this->consentRequired;
+	}
 	public function getCustomValidationMessage() {
 		return ($this->customValidationMessage) ? $this->customValidationMessage : _t('ConsentCheckboxField.ConsentErrorMessage', 'Please give your consent');
 	}
@@ -45,7 +56,7 @@ class ConsentCheckboxField extends CheckboxField {
 		return $this;
 	}
 	public function validate($validator) {
-		if (!$this->Value()) {
+		if ($this->consentRequired && !$this->Value()) {
 			$validator->validationError(
 				$this->name,
 				$this->getCustomValidationMessage(),
