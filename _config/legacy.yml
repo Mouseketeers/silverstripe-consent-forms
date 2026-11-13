@@ -1,5 +1,0 @@
-SilverStripe\ORM\DatabaseAdmin:
-  classname_value_remapping:
-    ConsentCheckboxField: Mouseketeers\ConsentForms\ConsentCheckboxField
-    PrivacyNoticeField: Mouseketeers\ConsentForms\PrivacyNoticeField
-    TermsAndPrivacyConsentCheckboxField: Mouseketeers\ConsentForms\TermsAndPrivacyConsentCheckboxField
